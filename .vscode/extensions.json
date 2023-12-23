@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "vue.volar",
+    "vue.vscode-typescript-vue-plugin",
+    "bradlc.vscode-tailwindcss",
+    "anbuselvanrocky.bootstrap5-vscode",
+    "hossaini.bootstrap-intellisense"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+    "theme_color": "#262626",
+    "background_color": "#262626",
+    "display": "fullscreen",
+    "start_url": "/qs",
+    "name": "Kalni Business Suite",
+    "short_name": "KBS",
+    "description": "Sales ERP, Web and Ecommerce management system.",
+    "orientation": "any",
+    "icons": [{
+            "src": "icon/manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icon/manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icon/manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icon/manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "screenshots": [{
+            "src": "icon/screenshot-2.png",
+            "sizes": "725x361",
+            "type": "image/png",
+            "platform": "wide"
+        }],
+    "shortcuts": [{
+            "name": "Charts Dashboard",
+            "url": "/qs/dashboard",
+            "description": "Open Admin Dashboard"
+        },
+        {
+            "name": "Sales",
+            "url": "/counter",
+            "description": "Open for new sale"
+        },
+        {
+            "name": "Purchase",
+            "url": "/qs/erp_receiveing/edit",
+            "description": "Receiving Items."
+        },
+        {
+            "name": "Product",
+            "url": "/qs/products/new",
+            "description": "Add a Product."
+        }
+    ]
+}

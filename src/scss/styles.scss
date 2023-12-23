@@ -1,0 +1,5 @@
+// Import all of Bootstrap's CSS
+@import "bootstrap/scss/bootstrap";
+$breadcrumb-divider-color:          $gray-200;
+$breadcrumb-active-color:           $gray-200;
+$breadcrumb-divider:                quote(">")!default;

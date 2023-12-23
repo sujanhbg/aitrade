@@ -1,0 +1,33 @@
+{
+    "name": "sujanhbg/kring",
+    "description": "A simple micro framework for php development",
+    "type": "library",
+    "license": "Apache-2.0",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Sujan C.Barty",
+            "email": "sujanhbg@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "kring\\core\\": "kring/",
+            "kring\\database\\": "kring/database",
+            "kring\\utilities\\": "kring/utilities"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.1",
+        "wixel/gump": "dev-master",
+        "nilportugues/sql-query-builder": "^1.8",
+        "tedivm/jshrink": "dev-master",
+        "phpmailer/phpmailer": "dev-master",
+        "phelium/mysql-backup": "dev-master",
+        "html2text/html2text": "dev-master",
+        "stefangabos/zebra_image": "dev-master",
+        "mpdf/mpdf": "dev-development",
+        "lcobucci/jwt": "4.4.x-dev",
+        "picqer/php-barcode-generator": "dev-main"
+    }
+}

@@ -1,0 +1,8 @@
+usages this library:
+
+Database: 
+query($qry)
+get($table, $fields = "*", $where = null)
+get_single_result($sql)
+
+

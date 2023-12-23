@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kalni.net/sitemap.xml
