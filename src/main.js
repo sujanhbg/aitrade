@@ -38,7 +38,7 @@ app.mixin({
 })
 var token = localStorage.getItem('token') ? localStorage.getItem('token') : '0';
 app.config.globalProperties.$token = token;
-app.config.globalProperties.$api = 'http://aifx.local/api/?token=' + token + '&';
-app.config.globalProperties.$imagethmb = 'http://aifx.local/imgs/thumb/';
-app.config.globalProperties.$image = 'http://aifx.local/imgs/';
+app.config.globalProperties.$api = 'http://api.trade.sujan.pw/api/?token=' + token + '&';
+app.config.globalProperties.$imagethmb = 'http://api.trade.sujan.pw/imgs/thumb/';
+app.config.globalProperties.$image = 'http://api.trade.sujan.pw/imgs/';
 app.mount('#app')
