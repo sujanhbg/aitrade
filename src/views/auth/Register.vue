@@ -67,9 +67,14 @@
 <script setup>
 
 import {ref} from "vue";
+import Axios from "@/services/axios";
 
 const formData = ref({})
 const submit = () => {
-  console.log()
+  Axios.post('?app=registration&opt=register_new', formData.value).then((response) => {
+    console.log(response)
+  }).catch((error) => {
+    console.log(error)
+  })
 }
 </script>
