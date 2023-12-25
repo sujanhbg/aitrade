@@ -1,4 +1,3 @@
-
 <template>
     <div class="topcard">
         <div class="row">

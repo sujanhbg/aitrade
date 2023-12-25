@@ -7,6 +7,9 @@
     </div>
   </div>
 
+  <div v-if="Object.keys(errors).length" class="error text-center">
+    <p class="text-danger" v-html="errors"></p>
+  </div>
 
   <div class="mt-3 d-flex justify-content-center align-items-center">
     <div class="container">
@@ -20,7 +23,7 @@
                        class="form-control"
                        id="first_name"
                        placeholder="John"
-                       v-model="formData.first_name">
+                       v-model="formData.firstname">
               </div>
 
               <div class="mb-3">
@@ -29,7 +32,7 @@
                        class="form-control"
                        id="last_name"
                        placeholder="Doe"
-                       v-model="formData.last_name">
+                       v-model="formData.lastname">
               </div>
 
               <div class="mb-3">
@@ -44,7 +47,7 @@
               <div class="mb-3">
                 <label for="password" class="form-label ">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="*******"
-                       form="loginForm" autocomplete="password">
+                       v-model="formData.password" autocomplete="password">
               </div>
               <div class="d-grid">
                 <button class="btn btn-outline-danger" type="button" form="loginForm"
@@ -70,9 +73,14 @@ import {ref} from "vue";
 import Axios from "@/services/axios";
 
 const formData = ref({})
+const errors = ref({})
 const submit = () => {
+  errors.value = {}
   Axios.post('?app=registration&opt=register_new', formData.value).then((response) => {
-    console.log(response)
+    console.log(response.data.status)
+    if (response.data.status === 'error') {
+      errors.value = response.data.msg
+    }
   }).catch((error) => {
     console.log(error)
   })
