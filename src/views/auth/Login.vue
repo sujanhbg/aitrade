@@ -2,7 +2,7 @@
   <div class="bodytitle gr-royal">
     <div class="container text-center">
 
-      <h1 class="text-5xl"><img src="@/assets/logo.webp" title="Kalni-IT Logo" class="brand-logo img-fluid "></h1>
+      <h1 class="text-5xl"><img src="../../assets/logo.webp" title="Kalni-IT Logo" class="brand-logo img-fluid "></h1>
       <h2 class="text-3xl">Login</h2>
     </div>
   </div>
