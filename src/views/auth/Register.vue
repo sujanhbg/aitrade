@@ -15,13 +15,31 @@
           <div class="card">
             <div class="card-body p-5">
               <div class="mb-3">
+                <label for="first_name" class="form-label ">First name</label>
+                <input type="text"
+                       class="form-control"
+                       id="first_name"
+                       placeholder="John"
+                       v-model="formData.first_name">
+              </div>
+
+              <div class="mb-3">
+                <label for="last_name" class="form-label ">Last name</label>
+                <input type="text"
+                       class="form-control"
+                       id="last_name"
+                       placeholder="Doe"
+                       v-model="formData.last_name">
+              </div>
+
+              <div class="mb-3">
                 <label for="email" class="form-label ">Email address</label>
                 <input type="email"
                        class="form-control"
                        id="email"
                        name="email"
                        placeholder="name@example.com"
-                       form="loginForm">
+                       v-model="formData.email">
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label ">Password</label>
@@ -52,6 +70,6 @@ import {ref} from "vue";
 
 const formData = ref({})
 const submit = () => {
-  console.log('submit')
+  console.log()
 }
 </script>
