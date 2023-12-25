@@ -114,7 +114,7 @@ class Model_auth
 
                     if ($active == 1) {
                         if ($role == 22 || $role == 21 || $role == 23 || $role == 24 || $role == 44) {
-                            $token = $this->jwt->issue_jwt($ID);
+                            $token = $this->jwt->issue_jwt($ID, $role);
                             $this->insert_login_history($ID);
                             return ['status' => 'success', 'uid' => $ID, 'token' => $token, 'name' => $name, 'photo' => $photo];
                         } else {

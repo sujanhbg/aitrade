@@ -38,6 +38,7 @@ app.mixin({
 })
 var token = localStorage.getItem('token') ? localStorage.getItem('token') : '0';
 app.config.globalProperties.$token = token;
+//Change api url
 app.config.globalProperties.$api = 'http://api.trade.sujan.pw/api/?token=' + token + '&';
 app.config.globalProperties.$imagethmb = 'http://api.trade.sujan.pw/imgs/thumb/';
 app.config.globalProperties.$image = 'http://api.trade.sujan.pw/imgs/';

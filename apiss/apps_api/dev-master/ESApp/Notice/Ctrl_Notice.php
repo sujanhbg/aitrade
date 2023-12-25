@@ -1,54 +1,48 @@
 <?php
 
 use kring\core\Controller;
-
-class Customers extends Controller
-{
+                
+class Notice extends Controller {
 
     public $adminarea;
 
-    function __construct()
-    {
+    function __construct() {
         parent::__construct();
         $this->adminarea = 1;
+
     }
 
-    function model()
-    {
-        return $this->loadESmodel('customers', 'Customers');
+    function model(){
+        return $this->loadESmodel('notice','Notice');
     }
 
-    function index()
-    {
+function index() {
+    return $this->model()->datasource();
+    }
+
+function datasource() {
         return $this->model()->datasource();
     }
-
-    function datasource()
-    {
-        return $this->model()->datasource();
-    }
-
-    function new()
-    {
+                    
+    function new() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $ress = $this->model()->customersnew__record_create();
-            if ($ress[0] == 1) {
+            $ress = $this->model()->noticenew__record_create();
+            if ($ress == 1 ) {
                 $data['status'] = "success";
-                $data['msg'] = "Created New customers Record Success!";
-                $data['customerID'] = $ress[1];
+                $data['msg'] = "Created New notice Record Success!";
             } else {
                 $data['status'] = "error";
                 $data['msg'] = $ress;
             }
         } elseif ($this->model()->comm()->rqstr('sopt') == 'CheckValid') {
-            $ress = $this->model()->customers_CheckValid();
+            $ress = $this->model()->notice_CheckValid();
             if ($ress == 1  && strlen($_REQUEST['fval']) > 0) {
                 $data['status'] = "success";
                 $data['msg'] = "Valid!";
-            } elseif ($ress == 1 && strlen($_REQUEST['fval']) == 0) {
+            }elseif ($ress == 1 && strlen($_REQUEST['fval']) == 0) {
                 $data['status'] = "init";
                 $data['msg'] = "Optional, Not Required";
-            } else {
+            }  else {
                 $data['status'] = "error";
                 $data['msg'] = $ress;
             }
@@ -59,15 +53,13 @@ class Customers extends Controller
         return $data;
     }
 
-    function editdata()
-    {
-        return $this->model()->get_customersEditData()[0];
+function editdata(){
+    return $this->model()->get_noticeEditData()[0];
     }
 
-    function edit()
-    {
+function edit() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $ress = $this->model()->customersedited_data_save();
+            $ress = $this->model()->noticeedited_data_save();
             if ($ress == 1) {
                 $data['status'] = "success";
                 $data['msg'] = "Successfully Saved!";
@@ -76,14 +68,14 @@ class Customers extends Controller
                 $data['msg'] = $ress;
             }
         } elseif ($this->model()->comm()->rqstr('sopt') == 'CheckValid') {
-            $ress = $this->model()->customers_CheckValid();
+            $ress = $this->model()->notice_CheckValid();
             if ($ress == 1  && strlen($_REQUEST['fval']) > 0) {
                 $data['status'] = "success";
                 $data['msg'] = "Valid!";
-            } elseif ($ress == 1 && strlen($_REQUEST['fval']) == 0) {
+            }elseif ($ress == 1 && strlen($_REQUEST['fval']) == 0) {
                 $data['status'] = "init";
                 $data['msg'] = "Optional, Not Required";
-            } else {
+            }  else {
                 $data['status'] = "error";
                 $data['msg'] = $ress;
             }
@@ -94,42 +86,41 @@ class Customers extends Controller
         return $data;
     }
 
-    function view($pr)
-    {
+    function view($pr){
         $data['ID'] = "success";
-        $data['data'] = $this->model()->customersViewdata($pr[2]);
+        $data['data']= $this->model()->noticeViewdata($pr[2]);
         return $data;
+       
     }
-    function data_for_select()
-    {
+function data_for_select() {
         return $this->model()->get_for_select();
     }
-    function delete()
-    {
-        $msg = $this->model()->customersDeleteSql();
-        if ($msg == true) {
-            $data['status'] = "success";
-            $data['msg'] = "customers Record Deleted!";
-        } else {
-            $data['status'] = "error";
-            $data['msg'] = "customers Record Delete Failed!";
+function delete() {
+        $msg=$this->model()->noticeDeleteSql();
+        if($msg==true){
+            $data['status']="success";
+            $data['msg']="notice Record Deleted!";
+        }else{
+            $data['status']="error";
+            $data['msg']="notice Record Delete Failed!";
         }
     }
 
-    function customers_restore()
-    {
-
-        $msg = $this->model()->customersRestoreSql();
-        if ($msg == true) {
-            $data['status'] = "success";
-            $data['msg'] = "customers Record Restored!";
-        } else {
-            $data['status'] = "error";
-            $data['msg'] = "customers Record Restore Failed!";
+    function notice_restore() {
+        
+           $msg= $this->model()->noticeRestoreSql();
+           if($msg==true){
+            $data['status']="success";
+            $data['msg']="notice Record Restored!";
+        }else{
+            $data['status']="error";
+            $data['msg']="notice Record Restore Failed!";
         }
-    }
-    function country_options()
-    {
-        return $this->model()->get_country_options_data();
+            
+        
     }
 }
+
+
+
+?>

@@ -40,7 +40,7 @@ class jwt
 
         $now = new DateTimeImmutable();
         $token = $tokenBuilder
-            ->issuedBy('https://kapp.pw')
+            ->issuedBy('https://api.trade.sujan.pw')
             ->permittedFor('http://localhost')
             ->issuedAt($now)
             ->canOnlyBeUsedAfter($now)
@@ -77,30 +77,37 @@ class jwt
 
     function get_uid()
     {
-        $tokenuni = isset($_GET['token']) ? $_GET['token'] : null;
-        if ($tokenuni == 'null' || $tokenuni == "null" || $tokenuni == "0") {
-            $data['status'] = "error";
-            $data['msg'] = "Token not submitted";
-        } else {
-            if ($this->is_valid($tokenuni) == 0) {
-                $parser = new Parser(new JoseEncoder());
-                $parser = new Parser(new JoseEncoder());
-                $key = InMemory::plainText('2T9/JxjJHNuiTdMIzui7BAtsltse/YElK/PvcladXZY=');
-                $token = (new JwtFacade())->parse(
-                    $tokenuni,
-                    new Constraint\SignedWith(new Sha256(), $key),
-                    new Constraint\StrictValidAt(
-                        new FrozenClock(new DateTimeImmutable())
-                    )
-                );
-                $data['status'] = "success";
-                $data['uid'] = $token->claims()->get('uid');
-                $data['role'] = $token->claims()->get('role');
-            } else {
-                $data['status'] = "error";
-                $data['msg'] = "You are not logged in";
-            }
+        if (!preg_match('/Bearer\s(\S+)/', $_SERVER['HTTP_AUTHORIZATION'], $matches)) {
+            header('HTTP/1.0 400 Bad Request');
+            echo 'Token not found in request';
+            exit;
         }
+        $jwt = $matches[1];
+        if (!$jwt) {
+            // No token was able to be extracted from the authorization header
+            header('HTTP/1.0 400 Bad Request');
+            exit;
+        }
+
+        if ($this->is_valid($jwt) == 0) {
+            $parser = new Parser(new JoseEncoder());
+            $parser = new Parser(new JoseEncoder());
+            $key = InMemory::plainText('2T9/JxjJHNuiTdMIzui7BAtsltse/YElK/PvcladXZY=');
+            $token = (new JwtFacade())->parse(
+                $jwt,
+                new Constraint\SignedWith(new Sha256(), $key),
+                new Constraint\StrictValidAt(
+                    new FrozenClock(new DateTimeImmutable())
+                )
+            );
+            $data['status'] = "success";
+            $data['uid'] = $token->claims()->get('uid');
+            $data['role'] = $token->claims()->get('role');
+        } else {
+            $data['status'] = "error";
+            $data['msg'] = "You are not logged in";
+        }
+
         return $data;
     }
 

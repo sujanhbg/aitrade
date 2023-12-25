@@ -241,7 +241,11 @@ class dbal
         }
         return $return;
     }
-
+    function check_exists($tablename, $where, $outsql = false)
+    {
+        $sql = "SELECT ID FROM {$tablename} WHERE {$where}";
+        return $this->num_of_row($sql) > 0 ? true : false;
+    }
     function add_table_notice()
     {
         $this->conn()->multi_query('SET FOREIGN_KEY_CHECKS=0;

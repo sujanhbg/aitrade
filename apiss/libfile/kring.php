@@ -397,10 +397,11 @@ class kring
         $app = $this->getClassName();
         $opt = $this->getMethod();
         //exit($app);
-        if (in_array($app, ['Home', 'Auth'], true)) {
+        if (in_array($app, ['Home', 'Auth', 'Registration'], true)) {
             return true;
         } else {
             $uid = $this->jwt->juid();
+            //echo "Uid found-" . $uid;
             $dbal = new database\dbal();
             $userrole = !$dbal->get_single_result("SELECT role FROM user WHERE ID={$uid}") ?
                 $dbal->get_single_result("SELECT role FROM persons WHERE ID={$uid}") : $dbal->get_single_result("SELECT role FROM user WHERE ID={$uid}");
@@ -572,11 +573,9 @@ class kring
         $this->addstats();
         $this->ipdtls();
 
-        if (isset($arr['response']['pretty'])) {
-            $jsoncontent = json_encode($arr, JSON_PRETTY_PRINT);
-        } else {
-            $jsoncontent = json_encode($arr);
-        }
+
+        $jsoncontent = json_encode($arr);
+
 
 
 
