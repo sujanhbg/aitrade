@@ -122,7 +122,7 @@
                 $gump->validation_rules($this->userValidationRules());
                 $gump->filter_rules($this->userFilterRules());
                 $gump->set_fields_error_messages($this->userValidationMessage());
-                $validated_data = $gump->run($_POST);
+                $validated_data = $gump->run($postdata = json_decode(file_get_contents('php://input'), true));
 
                 $return = "";
                 if ($validated_data === false) {

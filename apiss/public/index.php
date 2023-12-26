@@ -1,4 +1,11 @@
 <?php
+if (isset($_GET['uid']) && $_GET['uid'] == 10023601) {
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+} else {
+    error_reporting(0);
+}
 if (isset($_SERVER['HTTP_ORIGIN'])) {
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Credentials: true');
@@ -17,9 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 header('Content-Type: application/json; charset=utf-8');
 define('__ROOT__', dirname(dirname(__FILE__)));
 
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
+
 require dirname(__DIR__) . '/vendor/autoload.php';
 
 foreach (glob(dirname(__DIR__) . '/libfile' . '/*.php') as $file) {

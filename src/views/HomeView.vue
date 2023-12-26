@@ -1,11 +1,9 @@
-<script setup></script>
-
 <template>
-    <homenav :mname="this.mname" :back="this.back"></homenav>
+    <homenav :mname="mname" :back="back"></homenav>
     <div class="p-2" @click="this.crmenu()">
         <div class="row" id="mainbody">
             <div class="col-12">
-                <h2>Welcome to AIFX</h2>
+                <h2>Welcome to {{ mname }}</h2>
                 <h6>Trading, Invest and Gameplay from single plase</h6>
 
 
@@ -58,32 +56,11 @@
         </div>
     </div>
 </template>
-<script>
+<script setup>
+import { ref } from "vue";
 import homenav from '../components/homenav.vue';
-export default {
-    name: "HomeView",
-    data() {
-        return {
-            back: '/home',
-            mname: 'AIFX'
-        }
-    },
-    components: { homenav },
-    metaInfo: {
-        meta: [
-            { charset: 'utf-8' },
-            { name: 'description', content: 'foo' }
-        ]
-    },
-    methods: {
-        goto(link) {
-            this.$router.push(link);
-        }
-    },
-    mounted() {
-        this.crmenu();
-    },
-};
+const back = '/home';
+const mname = 'AIFX';
 </script>
 <style scoped>
 h1 {

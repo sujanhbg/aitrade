@@ -26,10 +26,6 @@ app.mixin({
             })
             toastList.forEach(toast => toast.show())
         },
-        rightnav() {
-            const rn = document.getElementById('rnav');
-            rn.style = "display:block";
-        },
         crmenu() {
             const rn = document.getElementById('rnav');
             rn.style = "display:none";
