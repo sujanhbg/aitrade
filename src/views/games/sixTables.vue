@@ -9,10 +9,12 @@
 
             </div>
             <div class="col-12 mb-2">
-                <div class="card p-2 text-center cursor-pointer" @click="this.$router.push('/games/6cube')">
-                    <img src="@/assets/dice.webp">
-                    <b>6 Cube</b><br>
-                    <p>Traditional Indian Game</p>
+                <div class="card p-2 text-center" @click="this.$router.push('/games/6cube')" style="cursor: pointer;">
+
+                    <b>Titas Table</b><br>
+                    <p>Min bid: $10.00<br>Max bid: $100.00</p>
+                    <h5>Gain: 6x</h5>
+                    <p class=" text-warning">Instant transfer</p>
                 </div>
             </div>
         </div>
@@ -22,8 +24,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import Axios from "@/services/axios";
-const back = '/';
-const mname = "Games";
+const back = '/games';
+const mname = "Tables";
 onMounted(() => {
 
 })

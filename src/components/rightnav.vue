@@ -148,6 +148,7 @@ export default {
     left: 0px;
     width: 100%;
     border-top: 1px solid #ccc;
+    z-index: 111;
 }
 
 .bottomnav .material-symbols-outlined {

@@ -81,20 +81,9 @@ class Home extends Controller
         }
         return $data;
     }
-    function allctg()
+    function userdata()
     {
-        return $this->model()->get_category();
-    }
-    function allctghome()
-    {
-        return $this->model()->get_categoryHome();
-    }
-    function products()
-    {
-        return $this->model()->get_products();
-    }
-    function productshome()
-    {
-        return $this->model()->get_productsHome();
+        $data['balance'] = $this->model()->get_balance();
+        return $data;
     }
 }
